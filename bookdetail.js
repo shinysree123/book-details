@@ -12,7 +12,7 @@ const bookSchema =new Mongoose.Schema({
     distributor:String
 });
  var bookModel = Mongoose.model('books',bookSchema);
- Mongoose.connect("mongodb+srv://shinyjoseph:shiny@123@cluster0-jlqrf.mongodb.net/test?retryWrites=true&w=majority");
+ Mongoose.connect("mongodb+srv://shinyjoseph:shiny@cluster0-x64bo.mongodb.net/test?retryWrites=true&w=majority");
 
 
 
@@ -20,30 +20,28 @@ app.get('/',(req,res)=>{
     res.send("hii");
 });
 app.post('/books',async(req,res)=>{
-    // var gettitle=req.body.title;
-    // var getauthor=req.body.author;
-    // var getdescr=req.body.descr;
-    // var getprice=req.body.price;
-    // var getpublisher=req.body.publisher;
-    // var getdistributor=req.body.distributor;
+    var gettitle=req.body.title;
+    var getauthor=req.body.author;
+    var getdescr=req.body.descr;
+    var getprice=req.body.price;
+    var getpublisher=req.body.publisher;
+    var getdistributor=req.body.distributor;
 
-    try {
-        var bookdata = new bookModel(req.body);
-        var result = await bookdata.save();
-        res.json(result);
-        
-        } 
-    catch (error) 
-        {
-        console.log(error);
-        res.status(500).send(error);
-        }   
+   try {
+    var bookdata = new bookModel(req.body);
+    var result = await bookdata.save();
+    res.json(result);
+       
+   } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+       
+   }
 });
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3270, () => {
     console.log("server started");
 });
-
 
 
 
