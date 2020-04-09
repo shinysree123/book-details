@@ -57,6 +57,17 @@ app.post('/search',(req,res)=>{
         }
     });
 });
+app.post('/search1',(req,res)=>{
+    var searchkey = req.body.element
+    bookModel.find({"author":data},(error,data)=>{
+        if (error) {
+            throw error;
+            
+        } else {
+            res.send(data)
+        }
+    });
+});
 
 app.listen(process.env.PORT || 3567, () => {
     console.log("server started");
