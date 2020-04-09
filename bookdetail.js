@@ -59,7 +59,7 @@ app.post('/search',(req,res)=>{
 });
 app.post('/search1',(req,res)=>{
     var searchkey = req.body.element
-    bookModel.find({"author":data},(error,data)=>{
+    bookModel.find({"author":searchkey},(error,data)=>{
         if (error) {
             throw error;
             
