@@ -51,14 +51,14 @@ app.post('/viewall',async(req,res)=>{
 app.post('/search',(req,res)=>{
     bookModel.find(req.body,(error,data)=>{
         if (error) {
-            throw(error);
+            throw error;
         } else {
             res.send(data);
         }
     });
 });
 
-app.listen(process.env.PORT || 3270, () => {
+app.listen(process.env.PORT || 3567, () => {
     console.log("server started");
 });
 
