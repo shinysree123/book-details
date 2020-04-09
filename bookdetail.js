@@ -38,6 +38,25 @@ app.post('/books',async(req,res)=>{
        
    }
 });
+app.post('/viewall',async(req,res)=>{
+    try {
+        var result=await bookModel.find();
+        res.send(result);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+        
+    }
+});
+app.post('/search',(req,res)=>{
+    bookModel.find(req.body,(error,data)=>{
+        if (error) {
+            throw(error);
+        } else {
+            res.send(data);
+        }
+    });
+});
 
 app.listen(process.env.PORT || 3270, () => {
     console.log("server started");
